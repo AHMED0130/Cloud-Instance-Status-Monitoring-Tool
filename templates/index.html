@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC2 Instance Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #instance-status {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #instance-status th, #instance-status td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        #instance-status th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>EC2 Instance Status</h1>
+    <table id="instance-status">
+        <thead>
+            <tr>
+                <th>Instance ID</th>
+                <th>Instance State</th>
+                <th>Instance Status</th>
+                <th>System Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Instance status rows will be dynamically added here -->
+        </tbody>
+    </table>
+    <script>
+        function updateInstanceStatus() {
+            fetch('/instance_status')
+                .then(response => response.json())
+                .then(data => {
+                    const instanceStatusTable = document.getElementById('instance-status').getElementsByTagName('tbody')[0];
+                    instanceStatusTable.innerHTML = '';
+                    data.forEach(instance => {
+                        const row = instanceStatusTable.insertRow();
+                        row.insertCell(0).textContent = instance.instance_id;
+                        row.insertCell(1).textContent = instance.instance_state;
+                        row.insertCell(2).textContent = instance.instance_status;
+                        row.insertCell(3).textContent = instance.system_status;
+                    });
+                });
+        }
+        setInterval(updateInstanceStatus, 5000); // Refresh every 5 seconds
+        document.addEventListener('DOMContentLoaded', updateInstanceStatus); // Initial update on page load
+    </script>
+</body>
+</html>

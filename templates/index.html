@@ -30,6 +30,7 @@
 </head>
 <body>
     <h1>EC2 Instance Status</h1>
+    <button id="refresh-button">Refresh</button> <!-- Add a refresh button -->
     <table id="instance-status">
         <thead>
             <tr>
@@ -44,6 +45,7 @@
         </tbody>
     </table>
     <script>
+        // Function to update instance status
         function updateInstanceStatus() {
             fetch('/instance_status')
                 .then(response => response.json())
@@ -59,8 +61,12 @@
                     });
                 });
         }
-        setInterval(updateInstanceStatus, 5000); // Refresh every 5 seconds
-        document.addEventListener('DOMContentLoaded', updateInstanceStatus); // Initial update on page load
+
+        // Function to refresh content when the button is clicked
+        document.getElementById('refresh-button').addEventListener('click', updateInstanceStatus);
+
+        // Initially fetch instance status when the page loads
+        updateInstanceStatus();
     </script>
 </body>
 </html>

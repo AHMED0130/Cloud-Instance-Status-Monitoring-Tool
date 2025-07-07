@@ -4,9 +4,9 @@
 
 This project is a **robust monitoring tool** developed with **Python, Flask, and Boto3** to track the **status of EC2 instances in real-time**.
 
-✅ Leverages **Boto3** to interface with AWS EC2 API
-✅ Fetches critical information: instance status, system status, and state
-✅ Implements a **dynamic web interface** using Flask for intuitive monitoring
+✅ Leverages **Boto3** to interface with AWS EC2 API  <br />
+✅ Fetches critical information: instance status, system status, and state  <br />
+✅ Implements a **dynamic web interface** using Flask for intuitive monitoring   <br />
 
 ---
 
@@ -24,10 +24,10 @@ project/
 
 ## 💡 Features
 
-✨ Real-time monitoring of EC2 instances
-✨ Fetches instance status, system status, and state details
-✨ Dynamic web interface with Flask
-✨ Simple deployment on local machine or EC2 instance
+✨ Real-time monitoring of EC2 instances  <br />
+✨ Fetches instance status, system status, and state details   <br />
+✨ Dynamic web interface with Flask   <br />
+✨ Simple deployment on local machine or EC2 instance   <br />
 
 ---
 
